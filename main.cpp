@@ -26,35 +26,12 @@ int main() {
 
         switch (choice) {
             case 1: {
-                string brand, model, color, plate;
-                int mileage;
-                cout << "Podaj marke: ";
-                getline(cin, brand);
-                cout << "Podaj model: ";
-                getline(cin, model);
-                cout << "Podaj kolor: ";
-                getline(cin, color);
-                cout << "Podaj przebieg: ";
-                cin >> mileage;
-                while (mileage < 0) {
-                    cout << "Podaj prawidlowy przebieg." << endl;
-                    cin >> mileage;
-                }
-                cin.ignore();
-                cout << "Podaj numer rejestracyjny: ";
-                getline(::cin, plate);
-
-                Car car(brand, model, color, mileage, plate);
-                reg.addCar(car);
-                cout << "Samochod dodany.\n";
+                reg.addCar();
                 break;
             }
 
             case 2: {
-                string plate;
-                cout << "Podaj numer rejestracyjny do usuniecia: ";
-                getline(cin, plate);
-                reg.removeCarByPlate(plate);
+                reg.removeCarByPlate();
                 break;
             }
 
@@ -63,52 +40,32 @@ int main() {
                 break;
 
             case 4: {
-                string brand;
-                cout << "Podaj marke do wyszukania: ";
-                getline(cin, brand);
-                reg.searchByBrand(brand);
+                reg.searchByBrand();
                 break;
             }
 
             case 5: {
-                string color;
-                cout << "Podaj kolor do wyszukania: ";
-                getline(std::cin, color);
-                reg.searchByColor(color);
+                reg.searchByColor();
                 break;
             }
 
             case 6: {
-                int mileage;
-                cout << "Podaj minimalny przebieg: ";
-                cin >> mileage;
-                cin.ignore();
-                reg.searchMileageAbove(mileage);
+                reg.searchMileageAbove();
                 break;
             }
 
             case 7: {
-                int mileage;
-                cout << "Podaj maksymalny przebieg: ";
-                cin >> mileage;
-                cin.ignore();
-                reg.searchMileageBelow(mileage);
+                reg.searchMileageBelow();
                 break;
             }
 
             case 8: {
-                string filename;
-                cout << "Podaj nazwe pliku do zapisu: ";
-                getline(cin, filename);
-                reg.saveToFile(filename);
+                reg.saveToFile();
                 break;
             }
 
             case 9: {
-                string filename;
-                cout << "Podaj nazwe pliku do wczytania: ";
-                getline(cin, filename);
-                reg.loadFromFile(filename);
+                reg.loadFromFile();
                 break;
             }
 

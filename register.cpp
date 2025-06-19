@@ -6,16 +6,39 @@ Register::Register() {
     size = 0;
 }
 
-void Register::addCar(const Car& car) {
-    if (size < 100) {
-        cars[size] = car;
-        size++;
-    } else {
+void Register::addCar() {
+    if (size >= 100) {
         cout << "Rejestr jest pelny!\n";
+        return;
     }
+
+    string brand, model, color, plate;
+    int mileage;
+
+    cout << "Podaj marke: ";
+    getline(cin, brand);
+    cout << "Podaj model: ";
+    getline(cin, model);
+    cout << "Podaj kolor: ";
+    getline(cin, color);
+    cout << "Podaj przebieg: ";
+    cin >> mileage;
+    cin.ignore();
+    cout << "Podaj numer rejestracyjny: ";
+    getline(cin, plate);
+
+    Car car(brand, model, color, mileage, plate);
+
+    cars[size] = car;
+    size++;
+
+    cout << "Samochod dodany.\n";
 }
 
-void Register::removeCarByPlate(const string& plate) {
+void Register::removeCarByPlate() {
+    string plate;
+    cout << "Podaj numer rejestracyjny do usuniecia: ";
+    getline(std::cin, plate);
     for (int i = 0; i < size; i++) {
         if (cars[i].getPlate() == plate) {
 
@@ -31,12 +54,20 @@ void Register::removeCarByPlate(const string& plate) {
 }
 
 void Register::displayAll() const {
+    if (size == 0) {
+        cout << "Rejestr jest pusty" << endl;
+        return;
+    }
+
     for (int i = 0; i < size; i++) {
         cars[i].display();
     }
 }
 
-void Register::searchByBrand(const string& brand) const {
+void Register::searchByBrand() const {
+    string brand;
+    cout << "Podaj marke do wyszukania: ";
+    getline(cin, brand);
     int count = 0;
     for (int i = 0; i < size; ++i) {
         if (cars[i].getBrand() == brand) {
@@ -49,7 +80,10 @@ void Register::searchByBrand(const string& brand) const {
     }
 }
 
-void Register::searchByColor(const string& color) const {
+void Register::searchByColor() const {
+    string color;
+    cout << "Podaj kolor do wyszukania: ";
+    getline(std::cin, color);
     int count = 0;
     for (int i = 0; i < size; ++i) {
         if (cars[i].getColor() == color) {
@@ -64,23 +98,42 @@ void Register::searchByColor(const string& color) const {
 
 
 
-void Register::searchMileageAbove(int mileage) const {
+void Register::searchMileageAbove() const {
+    int mileage;
+    cout << "Podaj minimalny przebieg: ";
+    cin >> mileage;
+    int count = 0;
     for (int i = 0; i < size; i++) {
         if (cars[i].getMileage() > mileage) {
             cars[i].display();
+            count++;
         }
+    }
+    if (count == 0) {
+        cout << "Brak samochodow z przebiegiem wiekszym niz " << mileage << ".\n";
     }
 }
 
-void Register::searchMileageBelow(int mileage) const {
+void Register::searchMileageBelow() const {
+    int mileage;
+    cout << "Podaj maksymalny przebieg: ";
+    cin >> mileage;
+    int count = 0;
     for (int i = 0; i < size; i++) {
         if (cars[i].getMileage() < mileage) {
             cars[i].display();
+            count++;
         }
+    }
+    if (count == 0) {
+        cout << "Brak samochodów z przebiegiem mniejszym niż " << mileage << ".\n";
     }
 }
 
-void Register::saveToFile(const string& filename) const {
+void Register::saveToFile() const {
+    string filename;
+    cout << "Podaj nazwe pliku do zapisu: ";
+    getline(cin, filename);
     ofstream file(filename);
     if (!file) {
         cout << "Blad otwierania pliku do zapisu!\n";
@@ -93,7 +146,10 @@ void Register::saveToFile(const string& filename) const {
     cout << "Zapisano dane do pliku.\n";
 }
 
-void Register::loadFromFile(const string& filename) {
+void Register::loadFromFile() {
+    string filename;
+    cout << "Podaj nazwe pliku do wczytania: ";
+    getline(cin, filename);
     ifstream file(filename);
     if (!file) {
         cout << "Blad otwierania pliku do odczytu!\n";
