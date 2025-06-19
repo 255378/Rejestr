@@ -11,10 +11,8 @@ void Register::addCar() {
         cout << "Rejestr jest pelny!\n";
         return;
     }
-
     string brand, model, color, plate;
     int mileage;
-
     cout << "Podaj marke: ";
     getline(cin, brand);
     cout << "Podaj model: ";
@@ -38,7 +36,7 @@ void Register::addCar() {
 void Register::removeCarByPlate() {
     string plate;
     cout << "Podaj numer rejestracyjny do usuniecia: ";
-    getline(std::cin, plate);
+    getline(cin, plate);
     for (int i = 0; i < size; i++) {
         if (cars[i].getPlate() == plate) {
 
@@ -83,7 +81,7 @@ void Register::searchByBrand() const {
 void Register::searchByColor() const {
     string color;
     cout << "Podaj kolor do wyszukania: ";
-    getline(std::cin, color);
+    getline(cin, color);
     int count = 0;
     for (int i = 0; i < size; ++i) {
         if (cars[i].getColor() == color) {
