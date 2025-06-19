@@ -1,19 +1,19 @@
 #ifndef CAR_H
 #define CAR_H
-
+using namespace std;
 #include <string>
 
 class Car {
 private:
-    std::string brand;
-    std::string model;
-    std::string color;
+    string brand;
+    string model;
+    string color;
     int mileage;
-    std::string plateNumber;
+    string plateNumber;
 
 public:
     Car(); // Konstruktor domyślny
-    Car(std::string b, std::string m, std::string c, int km, std::string plate);
+    Car(string b, string m, string c, int km, string plate);
 
 
 
@@ -23,18 +23,18 @@ public:
 
 
 
-    std::string getBrand() const;
+    string getBrand() const;
 
-    std::string getColor() const;
+    string getColor() const;
 
     int getMileage() const;
 
-    std::string getPlate() const;
+    string getPlate() const;
 
 
-    std::string serialize() const;
+    string serialize() const;
 
-    static Car deserialize(const std::string &line);
+    static Car deserialize(const string &line);
 };
 
 #endif

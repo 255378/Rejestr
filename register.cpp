@@ -1,7 +1,7 @@
 #include "Register.h"
 #include <iostream>
 #include <fstream>
-
+using namespace std;
 Register::Register() {
     size = 0;
 }
@@ -11,11 +11,11 @@ void Register::addCar(const Car& car) {
         cars[size] = car;
         size++;
     } else {
-        std::cout << "Rejestr jest pelny!\n";
+        cout << "Rejestr jest pelny!\n";
     }
 }
 
-void Register::removeCarByPlate(const std::string& plate) {
+void Register::removeCarByPlate(const string& plate) {
     for (int i = 0; i < size; i++) {
         if (cars[i].getPlate() == plate) {
 
@@ -23,11 +23,11 @@ void Register::removeCarByPlate(const std::string& plate) {
                 cars[j] = cars[j + 1];
             }
             size--;
-            std::cout << "Usunieto samochod o rejestracji: " << plate << std::endl;
+            cout << "Usunieto samochod o rejestracji: " << plate << endl;
             return;
         }
     }
-    std::cout << "Nie znaleziono samochodu o tej rejestracji.\n";
+    cout << "Nie znaleziono samochodu o tej rejestracji.\n";
 }
 
 void Register::displayAll() const {
@@ -36,7 +36,7 @@ void Register::displayAll() const {
     }
 }
 
-void Register::searchByBrand(const std::string& brand) const {
+void Register::searchByBrand(const string& brand) const {
     int count = 0;
     for (int i = 0; i < size; ++i) {
         if (cars[i].getBrand() == brand) {
@@ -49,7 +49,7 @@ void Register::searchByBrand(const std::string& brand) const {
     }
 }
 
-void Register::searchByColor(const std::string& color) const {
+void Register::searchByColor(const string& color) const {
     int count = 0;
     for (int i = 0; i < size; ++i) {
         if (cars[i].getColor() == color) {
@@ -58,7 +58,7 @@ void Register::searchByColor(const std::string& color) const {
         }
     }
     if (count == 0) {
-        std::cout << "Nie ma samochodu w takim kolorze.\n";
+        cout << "Nie ma samochodu w takim kolorze.\n";
     }
 }
 
@@ -80,31 +80,31 @@ void Register::searchMileageBelow(int mileage) const {
     }
 }
 
-void Register::saveToFile(const std::string& filename) const {
-    std::ofstream file(filename);
+void Register::saveToFile(const string& filename) const {
+    ofstream file(filename);
     if (!file) {
-        std::cout << "Blad otwierania pliku do zapisu!\n";
+        cout << "Blad otwierania pliku do zapisu!\n";
         return;
     }
     for (int i = 0; i < size; i++) {
-        file << cars[i].serialize() << std::endl;
+        file << cars[i].serialize() << endl;
     }
     file.close();
-    std::cout << "Zapisano dane do pliku.\n";
+    cout << "Zapisano dane do pliku.\n";
 }
 
-void Register::loadFromFile(const std::string& filename) {
-    std::ifstream file(filename);
+void Register::loadFromFile(const string& filename) {
+    ifstream file(filename);
     if (!file) {
-        std::cout << "Blad otwierania pliku do odczytu!\n";
+        cout << "Blad otwierania pliku do odczytu!\n";
         return;
     }
-    std::string line;
+    string line;
     size = 0;
-    while (std::getline(file, line) && size < 100) {
+    while (getline(file, line) && size < 100) {
         cars[size] = Car::deserialize(line);
         size++;
     }
     file.close();
-    std::cout << "Wczytano dane z pliku.\n";
+    cout << "Wczytano dane z pliku.\n";
 }
