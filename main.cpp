@@ -37,7 +37,7 @@ int main() {
                 cout << "Podaj przebieg: ";
                 cin >> mileage;
                 while (mileage < 0) {
-                    cout << 1"Podaj prawidlowy przebieg." << endl;
+                    cout << "Podaj prawidlowy przebieg." << endl;
                     cin >> mileage;
                 }
                 cin.ignore();
