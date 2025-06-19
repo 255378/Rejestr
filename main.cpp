@@ -36,11 +36,11 @@ int main() {
                 getline(cin, color);
                 cout << "Podaj przebieg: ";
                 cin >> mileage;
-                cin.ignore();
-                if (mileage < 0) {
-                    std::cout << "Przebieg nie moze byc ujemny.\n";
-                    break;
+                while (mileage < 0) {
+                    cout << 1"Podaj prawidlowy przebieg." << endl;
+                    cin >> mileage;
                 }
+                cin.ignore();
                 cout << "Podaj numer rejestracyjny: ";
                 getline(::cin, plate);
 
