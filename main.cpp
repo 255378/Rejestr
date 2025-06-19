@@ -23,6 +23,7 @@ int main() {
         cin >> choice;
         cin.ignore();
 
+
         switch (choice) {
             case 1: {
                 string brand, model, color, plate;
@@ -36,8 +37,12 @@ int main() {
                 cout << "Podaj przebieg: ";
                 cin >> mileage;
                 cin.ignore();
+                if (mileage < 0) {
+                    std::cout << "Przebieg nie moze byc ujemny.\n";
+                    break;
+                }
                 cout << "Podaj numer rejestracyjny: ";
-                getline(cin, plate);
+                getline(::cin, plate);
 
                 Car car(brand, model, color, mileage, plate);
                 reg.addCar(car);
@@ -68,7 +73,7 @@ int main() {
             case 5: {
                 string color;
                 cout << "Podaj kolor do wyszukania: ";
-                getline(cin, color);
+                getline(std::cin, color);
                 reg.searchByColor(color);
                 break;
             }
