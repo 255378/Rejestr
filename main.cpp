@@ -113,11 +113,11 @@ int main() {
             }
 
             case 0:
-                std::cout << "Do widzenia!\n";
+                cout << "Do widzenia!\n";
                 break;
 
             default:
-                std::cout << "Nieznana opcja. Sprobuj ponownie.\n";
+                cout << "Nieznana opcja. Sprobuj ponownie.\n";
                 break;
         }
 

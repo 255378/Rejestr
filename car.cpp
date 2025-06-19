@@ -6,12 +6,8 @@ Car::Car() : brand(""), model(""), color(""), mileage(0), plateNumber("") {}
 Car::Car(string b, string m, string c, int km, string plate)
     : brand(b), model(m), color(c), mileage(km), plateNumber(plate) {}
 
-void Car::display() const {  //wyswietla
-    cout << "Marka: " << brand
-              << ", Model: " << model
-              << ", Kolor: " << color
-              << ", Przebieg: " << mileage
-              << ", Rejestracja: " << plateNumber << endl;
+void Car::display() const {
+    cout << "Marka: " << brand << ", Model: " << model << ", Kolor: " << color << ", Przbieg: " << mileage << ", Rejestracja: " << plateNumber << endl;
 }
 
 string Car::getBrand() const {
@@ -36,17 +32,12 @@ string Car::serialize() const {
 
 Car Car::deserialize(const string& line) {
     stringstream ss(line);
-
-
-
     string b, m, c, kmStr, plate;
-
     getline(ss, b, ';');
     getline(ss, m, ';');
     getline(ss, c, ';');
     getline(ss, kmStr, ';');
     getline(ss, plate, ';');
-
     int km = stoi(kmStr);
     return Car(b, m, c, km, plate);
 }
