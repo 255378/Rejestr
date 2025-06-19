@@ -45,7 +45,7 @@ void Register::searchByBrand(const string& brand) const {
         }
     }
     if (count == 0) {
-        std::cout << "Nie ma samochodu o takiej marce.\n";
+        cout << "Nie ma samochodu o takiej marce.\n";
     }
 }
 

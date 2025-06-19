@@ -34,7 +34,7 @@ string Car::serialize() const {
     return brand + ";" + model + ";" + color + ";" + to_string(mileage) + ";" + plateNumber;
 }
 
-Car Car::deserialize(const std::string& line) {
+Car Car::deserialize(const string& line) {
     stringstream ss(line);
 
 
