@@ -39,7 +39,6 @@ void Register::removeCarByPlate() {
     getline(cin, plate);
     for (int i = 0; i < size; i++) {
         if (cars[i].getPlate() == plate) {
-
             for (int j = i; j < size - 1; j++) {
                 cars[j] = cars[j + 1];
             }
